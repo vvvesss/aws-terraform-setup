@@ -1,4 +1,4 @@
-# Terraform S3 Remote Backend Setup
+# AWS Terraform S3 Remote Backend Setup
 
 This repository contains Terraform configurations to set up a robust and secure S3 remote backend for Terraform state management with cross-region replication and DynamoDB state locking.
 
