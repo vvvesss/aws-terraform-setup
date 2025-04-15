@@ -15,11 +15,10 @@ This repository contains Terraform configurations to set up a robust and secure 
 
 ## Architecture
 ```mermaid
-
 flowchart TD
-    A[Terraform Client] -->|Apply| B[DynamoDB\nState Locking]
-    A -->|Read/Write State| C[Primary S3 Bucket\nwith Versioning & Encryption]
-    C -->|Cross-Region\nReplication| D[Replica S3 Bucket\nwith Versioning & Encryption]
+    A[Terraform Client] -->|Apply| B[DynamoDB<br>State Locking]
+    A -->|Read/Write State| C[Primary S3 Bucket<br>with Versioning & Encryption]
+    C -->|Cross-Region<br>Replication| D[Replica S3 Bucket<br>with Versioning & Encryption]
     E[IAM Role] -->|Enables| C
     E -->|Replication Permissions| D
 ```
