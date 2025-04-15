@@ -14,9 +14,15 @@ This repository contains Terraform configurations to set up a robust and secure 
 - ✅ IAM role with minimal permissions for replication
 
 ## Architecture
+```mermaid
 
-![Terraform Backend Architecture](https://via.placeholder.com/800x400?text=Terraform+Backend+Architecture)
-
+flowchart TD
+    A[Terraform Client] -->|Apply| B[DynamoDB\nState Locking]
+    A -->|Read/Write State| C[Primary S3 Bucket\nwith Versioning & Encryption]
+    C -->|Cross-Region\nReplication| D[Replica S3 Bucket\nwith Versioning & Encryption]
+    E[IAM Role] -->|Enables| C
+    E -->|Replication Permissions| D
+```
 The setup consists of:
 - Primary S3 bucket for storing Terraform state files
 - Secondary S3 bucket in a different AWS region for replication (disaster recovery)
